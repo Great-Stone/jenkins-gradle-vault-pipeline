@@ -1,0 +1,32 @@
+server:
+  port: ${NOMAD_HOST_PORT_http:8080}
+spring:
+  config:
+    import: vault://
+  cloud.vault:
+    enabled: true
+    host: ${VAULT_HOST:127.0.0.1}
+    port: ${VAULT_PORT:8200}
+    scheme: http
+    uri: ${VAULT_URI:http://127.0.0.1:8200/}
+    config:
+      lifecycle:
+        min-renewal: 14m
+        expiry-threshold: 15m
+    authentication: APPROLE
+    app-role:
+      role-id: ${VAULT_ROLE_ID:430111ee-5955-aa83-a53d-924b7e11ac36}
+      secret-id: ${VAULT_SECRET_ID:6db07578-b019-95b4-6741-de4c79cbde39}
+      role: aws-cred
+      app-role-path: approle
+    kv:
+      enabled: false
+    aws:
+      enabled: true
+      role: sts-s3
+      backend: aws
+      credential-type: federation_token
+      access-key-property: cloud.aws.credentials.accessKey
+      secret-key-property: cloud.aws.credentials.secretKey
+      session-token-key-property: cloud.aws.credentials.sessionToken
+      ttl: 900s
