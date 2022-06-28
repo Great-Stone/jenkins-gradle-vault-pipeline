@@ -64,7 +64,7 @@ public class VaultAWSConfiguration implements ApplicationContextAware {
 				
 				// refresh additional bean dependencies as needed
 				refresh("AWSConfiguration");
-				refresh("basicAWSCredentials");
+				// refresh("basicAWSCredentials");
 
 				logger.info("SecretLeaseCreatedEvent received and applied for: "+leaseEvent.getSource().getPath());
 			}

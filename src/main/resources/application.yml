@@ -1,5 +1,5 @@
 server:
-  port: ${NOMAD_HOST_PORT_http:8080}
+  port: ${NOMAD_HOST_PORT_http:18080}
 spring:
   config:
     import: vault://
