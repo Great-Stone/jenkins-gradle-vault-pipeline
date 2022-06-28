@@ -32,6 +32,7 @@ job "demo-java-vault" {
         DYNAMIC_PROPERTIES_PATH = "secrets/dynamic.properties"
         VAULT_HOST = var.vault_host
         VAULT_PORT = var.vault_port
+        VAULT_URI  = "http://${var.vault_host}:${var.vault_port}"
         VAULT_ROLE_ID = var.role_id
         VAULT_SECRET_ID = var.secret_id
       }
